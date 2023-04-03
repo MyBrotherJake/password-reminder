@@ -32,6 +32,13 @@ class SearchRequest extends FormRequest
      */
     public function get_site() : string
     {
-        return $this->input('site');
+        $siteName = $this->input('site');
+        
+        if ($siteName) 
+        {
+            return $siteName;    
+        } else {
+            return '';
+        }        
     }
 }
