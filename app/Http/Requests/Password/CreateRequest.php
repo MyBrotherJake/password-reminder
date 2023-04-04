@@ -26,8 +26,27 @@ class CreateRequest extends FormRequest
         return [
             //
             'site' => 'required|max:30',
-            'maddr' => 'required',
+            'mail' => 'required',
             'pass' => 'required',
         ];
+    }
+
+    public function get_values() : string
+    {
+        $site = $this->input('site');
+        $mail = $this->input('mail');
+        $account = $this->input('account');
+        $pass = $this->input('password');
+        $other = $this->input('other');
+
+        $values = [
+            'site' => $site,
+            'maddr' => $mail,
+            'account' => $account,
+            'pass' => $pass,
+            'bikou' => $other,
+        ];
+
+        return $values;
     }
 }
