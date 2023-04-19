@@ -18,7 +18,10 @@
   </form>
 </div>
 
-<button><a href="./password/create">CREATE</a></button>
+<form action="{{ route('password.show.create') }}" method="get">
+@csrf
+<button type="submit">CREATE</button>
+</form>
 
 <div>
   <table>
