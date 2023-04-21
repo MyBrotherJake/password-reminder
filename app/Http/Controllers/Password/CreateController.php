@@ -22,7 +22,7 @@ class CreateController extends Controller
     public function show(Request $request)
     {
         //
-        return view('password.create', ['name' => 'Laravel' ]);
+        return view('password.register', ['name' => 'Laravel' ]);
     }
     public function create(CreateRequest $request)
     {        

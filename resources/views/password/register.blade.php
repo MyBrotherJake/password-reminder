@@ -10,8 +10,16 @@
 @section('content')
 <p>{{ $name }}</p>
 
-@error('site', 'mail', 'password')
-  <p style="color: red">{{ $message }}</p>
+@error('site')
+  <p style="color: red">Required the WebSite.</p>
+@enderror
+
+@error('mail')
+  <p style="color: red">Required the Mail Address.</p>
+@enderror
+
+@error('password')
+  <p style="color: red">Required the Password.</p>
 @enderror
 
 <div class="create">
@@ -27,7 +35,7 @@
     <input type="text" name="password" id="password" value={{ old('password') }}>
     <label for="bikou">Other</label>
     <textarea name="bikou" id="bikou" cols="30" rows="10">{{ old('bikou') }}</textarea>  
-    <button type="submit">CREATE</button>    
+    <button type="submit">REGISTER</button>    
   </form>
 </div>
 @endsection
