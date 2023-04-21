@@ -34,11 +34,7 @@ class SearchRequest extends FormRequest
     {
         $siteName = $this->input('site');
         
-        if ($siteName) 
-        {
-            return $siteName;    
-        } else {
-            return '';
-        }        
+        if (!$siteName) $siteName = '';
+        return $siteName;
     }
 }

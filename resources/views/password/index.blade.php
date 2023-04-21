@@ -4,7 +4,7 @@
     
 @section('menubar')
   @parent
-  TOP    
+  <a href="/password">TOP</a>    
 @endsection
 
 @section('content')
@@ -12,11 +12,17 @@
 <div class="search">
   <form action="{{ route('password.search') }}" method="post">
     @csrf
-    <label for="password-content">Search Password</label>
+    <label for="password-content">Search WebSite</label>
     <input type="text" name="site" id="site">        
     <button type="submit">Search</button>
   </form>
 </div>
+
+<form action="{{ route('password.show.create') }}" method="get">
+@csrf
+<button type="submit">CREATE</button>
+</form>
+
 <div>
   <table>
     <tr>
