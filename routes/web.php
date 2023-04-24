@@ -18,5 +18,5 @@ Route::get('/', function () {
 });
 Route::get('/password', [Password\IndexController::class, 'show'])->name('password.index');
 Route::post('/password/search', [Password\SearchController::class, 'show'])->name('password.search');
-Route::get('/password/create', [Password\CreateController::class, 'show'])->name('password.show.create');
-Route::post('/password/create', [Password\CreateController::class, 'create'])->name('password.create');
+Route::get('/password/create/{id}', [Password\CreateController::class, 'show'])->name('password.show.create');
+Route::post('/password/create/{id}', [Password\CreateController::class, 'create'])->name('password.create');
