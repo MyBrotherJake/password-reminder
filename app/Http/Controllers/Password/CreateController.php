@@ -31,8 +31,16 @@ class CreateController extends Controller
         // GET ID
         $id = $request->route('id');              
         // GET INFO
-        $values = Password::where('id', '=', $id)->first();        
-        
+        $result = Password::where('id', '=', $id)->first();        
+        // 
+        $values['site'] = optional($result)->site;
+        $values['account'] = optional($result)->account;
+        $values['maddr'] = optional($result)->maddr;
+        $values['pass'] = optional($result)->pass;
+        $values['bikou'] = optional($result)->bikou;
+
+        //dd($values['site']);
+
         return view('password.register', [
             'name' => 'Laravel',
             'id' => $id,
@@ -43,9 +51,17 @@ class CreateController extends Controller
 
     public function create(CreateRequest $request)
     {        
+        $password = new Password;
         $values = $request->get_values();
-       
-        Password::create($values);
+
+        $password->site = $values['site'];
+        $password->account = $values['account'];
+        $password->maddr = $values['maddr'];
+        $password->pass = $values['pass'];
+        $password->bikou = $values['bikou'];
+
+        $password->save();
+        
         return redirect()->route('password.index');        
         
     }

@@ -36,7 +36,7 @@
     </tr>
     @foreach ($passwords as $password)
       <tr>
-        <td><a href="{{ route('password.show.create', ['id' => $password->id]) }}"><button type="submit">SELECT</a></td>
+        <td><a href="{{ route('password.show.create', ['id' => $password->id]) }}"><button type="submit">EDIT</a></td>
         <td>{{ $password->id }}</td>
         <td>{{ $password->site }}</td>
         <td>{{ $password->maddr }}</td>
