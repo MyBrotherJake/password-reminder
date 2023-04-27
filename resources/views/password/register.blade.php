@@ -9,6 +9,7 @@
 
 @section('content')
 <p>{{ $name }}</p>
+<p style="color:aqua">{{ $message }}</p>
 
 @error('site')
   <p style="color: red">Required the WebSite.</p>

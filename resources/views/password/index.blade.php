@@ -9,6 +9,7 @@
 
 @section('content')
 <p>{{ $name }}</p>
+
 <div class="search">
   <form action="{{ route('password.search') }}" method="post">
     @csrf
