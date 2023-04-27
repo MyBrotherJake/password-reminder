@@ -52,3 +52,14 @@ table {
 .create form {
   display:inline-grid;
 }
+
+.form-btn {
+  display: inline-flex;
+  margin-right: 500px;
+  margin-left: 10px;
+  float: right;
+}
+
+dd input {
+  width: 225px;
+}
