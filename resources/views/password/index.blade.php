@@ -10,6 +10,10 @@
 @section('content')
 <p>{{ $name }}</p>
 
+@if (session('feedback.success'))
+    <p style="color:aqua;">{{ session('feedback.success') }}</p>
+@endif
+
 <div class="search">
   <form action="{{ route('password.search') }}" method="post">
     @csrf
@@ -38,6 +42,13 @@
     @foreach ($passwords as $password)
       <tr>
         <td><a href="{{ route('password.show.create', ['id' => $password->id]) }}"><button type="submit">EDIT</a></td>
+        <td>
+          <form action="{{ route('password.delete', ['id' => $password->id]) }}" method="POST">            
+            @method('DELETE')
+            @csrf
+            <button type="submit" onclick="return confirm('Do you want to delete?')">DELETE</button>
+          </form>          
+        </td>
         <td>{{ $password->id }}</td>
         <td>{{ $password->site }}</td>
         <td>{{ $password->maddr }}</td>
