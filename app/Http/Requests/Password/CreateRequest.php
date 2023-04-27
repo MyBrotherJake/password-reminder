@@ -32,7 +32,7 @@ class CreateRequest extends FormRequest
     }
 
     public function get_values() : array
-    {
+    {        
         $site = $this->input('site');
         $mail = $this->input('mail');
         $account = $this->input('account');

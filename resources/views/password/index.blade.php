@@ -9,6 +9,7 @@
 
 @section('content')
 <p>{{ $name }}</p>
+
 <div class="search">
   <form action="{{ route('password.search') }}" method="post">
     @csrf
@@ -18,7 +19,7 @@
   </form>
 </div>
 
-<form action="{{ route('password.show.create') }}" method="get">
+<form action="{{ route('password.show.create', ['id' => 0]) }}" method="get">
 @csrf
 <button type="submit">CREATE</button>
 </form>
@@ -26,6 +27,7 @@
 <div>
   <table>
     <tr>
+      <th></th>
       <th>ID</th>
       <th>WebSite</th>
       <th>Mail</th>
@@ -35,6 +37,7 @@
     </tr>
     @foreach ($passwords as $password)
       <tr>
+        <td><a href="{{ route('password.show.create', ['id' => $password->id]) }}"><button type="submit">EDIT</a></td>
         <td>{{ $password->id }}</td>
         <td>{{ $password->site }}</td>
         <td>{{ $password->maddr }}</td>
