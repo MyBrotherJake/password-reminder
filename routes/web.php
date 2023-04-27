@@ -20,3 +20,4 @@ Route::get('/password', [Password\IndexController::class, 'show'])->name('passwo
 Route::post('/password/search', [Password\SearchController::class, 'show'])->name('password.search');
 Route::get('/password/create/{id}', [Password\CreateController::class, 'show'])->name('password.show.create');
 Route::post('/password/create/{id}', [Password\CreateController::class, 'create'])->name('password.create');
+Route::delete('/password/delete/{id}', [Password\DeleteController::class, 'delete'])->name('password.delete');
