@@ -56,10 +56,15 @@ table {
 .form-btn {
   display: inline-flex;
   margin-right: 500px;
-  margin-left: 10px;
+  margin-left: 10px;  
   float: right;
 }
 
 dd input {
   width: 225px;
+  border: none;
+}
+
+dd textarea {
+  border: none;
 }

@@ -14,20 +14,18 @@
     <p style="color:aqua;">{{ session('feedback.success') }}</p>
 @endif
 
-<div class="search">
+<div class="form-btn" style="margin-bottom:20px;">
   <form action="{{ route('password.search') }}" method="post">
     @csrf
     <label for="password-content">Search WebSite</label>
     <input type="text" name="site" id="site">        
     <button type="submit">Search</button>
   </form>
+  <form action="{{ route('password.show.create', ['id' => 0]) }}" method="get">
+    @csrf
+    <button type="submit">CREATE</button>
+  </form>
 </div>
-
-<form action="{{ route('password.show.create', ['id' => 0]) }}" method="get">
-@csrf
-<button type="submit">CREATE</button>
-</form>
-
 <div>
   @foreach ($passwords as $password)
       <details>
