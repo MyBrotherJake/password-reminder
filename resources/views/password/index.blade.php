@@ -14,50 +14,48 @@
     <p style="color:aqua;">{{ session('feedback.success') }}</p>
 @endif
 
-<div class="search">
+<div class="form-btn" style="margin-bottom:20px;">
   <form action="{{ route('password.search') }}" method="post">
     @csrf
     <label for="password-content">Search WebSite</label>
     <input type="text" name="site" id="site">        
     <button type="submit">Search</button>
   </form>
+  <form action="{{ route('password.show.create', ['id' => 0]) }}" method="get">
+    @csrf
+    <button type="submit">CREATE</button>
+  </form>
 </div>
-
-<form action="{{ route('password.show.create', ['id' => 0]) }}" method="get">
-@csrf
-<button type="submit">CREATE</button>
-</form>
-
 <div>
-  <table>
-    <tr>
-      <th></th>
-      <th>ID</th>
-      <th>WebSite</th>
-      <th>Mail</th>
-      <th>Account</th>
-      <th>Password</th>
-      <th>Other</th>
-    </tr>
-    @foreach ($passwords as $password)
-      <tr>
-        <td><a href="{{ route('password.show.create', ['id' => $password->id]) }}"><button type="submit">EDIT</a></td>
-        <td>
-          <form action="{{ route('password.delete', ['id' => $password->id]) }}" method="POST">            
-            @method('DELETE')
-            @csrf
-            <button type="submit" onclick="return confirm('Do you want to delete?')">DELETE</button>
-          </form>          
-        </td>
-        <td>{{ $password->id }}</td>
-        <td>{{ $password->site }}</td>
-        <td>{{ $password->maddr }}</td>
-        <td>{{ $password->account }}</td>
-        <td>{{ $password->pass }}</td>
-        <td>{{ $password->bikou }}</td>
-      </tr>        
-    @endforeach
-  </table>    
+  @foreach ($passwords as $password)
+      <details>
+        <summary>
+          {{ $password->site }} 
+          <div class="form-btn">            
+            <form action="{{ route('password.show.create', ['id' => $password->id]) }}" method="get">
+              @csrf
+              <button type="submit">EDIT</button>
+            </form>
+            <form action="{{ route('password.delete', ['id' => $password->id]) }}" method="post">
+              @method('DELETE')
+              @csrf
+              <button type="submit" onclick="return confirm('Do you want to delete?')">DELETE</button>
+            </form>          
+          </div>        
+        </summary>        
+        <dl>
+          <dt>Mail Address:</dt>
+          <dd><input type="text" name="maddr" value="{{ $password->maddr }}" readonly></dd>
+          <dt>Account:</dt>
+          <dd><input type="text" name="account" value="{{ $password->account }}" readonly></dd>
+          <dt>Password:</dt>
+          <dd><input type="text" name="pass" value="{{ $password->pass }}" readonly></dd>
+          <dt>Other:</dt>
+          <dd><textarea name="bikou"cols="30" rows="10" readonly>{{ $password->bikou }}</textarea></dd>                    
+        </dl>        
+      </details>
+    
+  @endforeach  
 </div>  
 @endsection
 
