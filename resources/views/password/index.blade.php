@@ -45,13 +45,29 @@
         </summary>        
         <dl>
           <dt>Mail Address:</dt>
-          <dd><input type="text" name="maddr" value="{{ $password->maddr }}" readonly></dd>
-          <dt>Account:</dt>
-          <dd><input type="text" name="account" value="{{ $password->account }}" readonly></dd>
+          <dd>
+            <input type="text" name="maddr" id="maddr" value="{{ $password->maddr }}" readonly>
+            <button class="copy" onclick="onClickCopy('maddr')">COPY</button>
+          </dd>
+          
+          <dt>Accou1nt:</dt>
+          <dd>
+            <input type="text" name="account" id="account" value="{{ $password->account }}" readonly>
+            <button class="copy" onclick="onClickCopy('account')">COPY</button>
+          </dd>          
+          
           <dt>Password:</dt>
-          <dd><input type="text" name="pass" value="{{ $password->pass }}" readonly></dd>
+          <dd>
+            <input type="text" name="pass" id="pass" value="{{ $password->pass }}" readonly>
+            <button class="copy" onclick="onClickCopy('pass')">COPY</button>
+          </dd>
+          
           <dt>Other:</dt>
-          <dd><textarea name="bikou"cols="30" rows="10" readonly>{{ $password->bikou }}</textarea></dd>                    
+          <dd>            
+            <textarea name="bikou" id="bikou" cols="30" rows="10" readonly>{{ $password->bikou }}</textarea>
+            <button class="copy" onclick="onClickCopy('bikou')">COPY</button>
+          </dd>                              
+          
         </dl>        
       </details>
     
