@@ -68,3 +68,7 @@ dd input {
 dd textarea {
   border: none;
 }
+
+.password-list {
+  display: inline-block;
+}
