@@ -17,7 +17,7 @@
 <div class="form-btn" style="margin-bottom:20px;">
   <form action="{{ route('password.search') }}" method="post">
     @csrf
-    <label for="password-content">Search WebSite</label>
+    <label for="site">Search WebSite</label>
     <input type="text" name="site" id="site">        
     <button type="submit">Search</button>
   </form>
@@ -26,7 +26,7 @@
     <button type="submit">CREATE</button>
   </form>
 </div>
-<div>
+<div class="password-list">
   @foreach ($passwords as $password)
       <details>
         <summary>
@@ -45,13 +45,29 @@
         </summary>        
         <dl>
           <dt>Mail Address:</dt>
-          <dd><input type="text" name="maddr" value="{{ $password->maddr }}" readonly></dd>
-          <dt>Account:</dt>
-          <dd><input type="text" name="account" value="{{ $password->account }}" readonly></dd>
+          <dd>
+            <input type="text" name="maddr" id={{ "maddr".$password->id }} value="{{ $password->maddr }}" readonly>
+            <button class="copy" onclick="onClickCopy('{{ addslashes('maddr'.$password->id) }}')">COPY</button>
+          </dd>
+          
+          <dt>Accou1nt:</dt>
+          <dd>
+            <input type="text" name="account" id={{ "account".$password->id }} value="{{ $password->account }}" readonly>
+            <button class="copy" onclick="onClickCopy('{{ addslashes('account'.$password->id) }}')">COPY</button>
+          </dd>          
+          
           <dt>Password:</dt>
-          <dd><input type="text" name="pass" value="{{ $password->pass }}" readonly></dd>
+          <dd>
+            <input type="text" name="pass" id={{ "pass".$password->id }} value="{{ $password->pass }}" readonly>
+            <button class="copy" onclick="onClickCopy('{{ addslashes('pass'.$password->id) }}')">COPY</button>
+          </dd>
+          
           <dt>Other:</dt>
-          <dd><textarea name="bikou"cols="30" rows="10" readonly>{{ $password->bikou }}</textarea></dd>                    
+          <dd>            
+            <textarea name="bikou" id={{ "bikou".$password->id }} cols="30" rows="10" readonly>{{ $password->bikou }}</textarea>
+            <button class="copy" onclick="onClickCopy('{{ addslashes('bikou'.$password->id) }}')">COPY</button>
+          </dd>                              
+          
         </dl>        
       </details>
     
