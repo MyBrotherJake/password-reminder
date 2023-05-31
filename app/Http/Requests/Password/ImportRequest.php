@@ -30,19 +30,28 @@ class ImportRequest extends FormRequest
 
     public function csv_import ($filePath)
     {
-        $fp = fopen($filePath, 'r');
-        //$line = fgetcsv($fp);
+        $fp = fopen($filePath, 'r');        
         $data =[];
         $cnt = 0;
         while ($line = fgetcsv($fp))
         {
+            mb_convert_variables('UTF-8', 'SJIS-win', $line);
+
             if ($cnt > 0)
-            {
-                array_push($data, $line);
+            {                            
+                $data[$cnt - 1] = [
+                    'id' => $line[0],
+                    'site' => $line[1],
+                    'maddr' => $line[2],
+                    'account' => $line[3],
+                    'pass' => $line[4],
+                    'bikou' => $line[5],
+                ];                
             }            
             $cnt++;
         }
-        fclose($fp);
+        fclose($fp);        
+
         return $data;
     }
 }

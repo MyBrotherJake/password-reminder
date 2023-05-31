@@ -57,7 +57,7 @@
             <button class="copy" onclick="onClickCopy('{{ addslashes('maddr'.$password->id) }}')">COPY</button>
           </dd>
           
-          <dt>Accou1nt:</dt>
+          <dt>Account:</dt>
           <dd>
             <input type="text" name="account" id={{ "account".$password->id }} value="{{ $password->account }}" readonly>
             <button class="copy" onclick="onClickCopy('{{ addslashes('account'.$password->id) }}')">COPY</button>
