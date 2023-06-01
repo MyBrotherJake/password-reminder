@@ -21,8 +21,8 @@ class ImportController extends Controller
             // Get File
             $file = $request->file('file');
             // CSVから配列に変換
-            $data = $request->csv_import($file);
-            
+            $data = $request->csv_import($file);            
+
             try {                
                 // Upsert処理
                 $this->update($data);  
@@ -39,17 +39,30 @@ class ImportController extends Controller
     {
         // 1行ずつ
         foreach($data as $key => $value)
-        {               
-            Password::updateOrCreate(
-                ['id' => $value['id']],
-                [
-                    'site' => $value['site'],
-                    'maddr' => $value['maddr'],
-                    'account' => $value['account'],
-                    'pass' => $value['pass'],
-                    'bikou' => $value['bikou'],
-                ]
-            );                
+        {                            
+            // Update
+            $password = Password::where('id', '=', $value['id'])->first();
+            if ($password) {
+                $password->site = $value['site'];
+                $password->account = $value['account'];
+                $password->maddr = $value['maddr'];
+                $password->pass = $value['pass'];
+                $password->bikou = $value['bikou'];        
+
+                $password->save();                       
+            } else {                
+                // Create
+                $password = new Password;  
+                $password->id = $value['id'];          
+                $password->site = $value['site'];
+                $password->account = $value['account'];
+                $password->maddr = $value['maddr'];
+                $password->pass = $value['pass'];
+                $password->bikou = $value['bikou'];        
+                $password->save();
+                // GETTA NEW ID
+                $newID = $password->id;
+            }   
         }        
     }    
 }
