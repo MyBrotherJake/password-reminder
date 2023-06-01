@@ -32,6 +32,11 @@
     <label for="">Create New</label>    
     <button type="submit">CREATE</button>
   </form>
+  <form action="{{ route('password.export') }}" method="post">
+    @csrf
+    <label for="">Export CSV</label>
+    <button type="submit">Export</button>
+  </form>
 </div>
 <div class="password-list">
   @foreach ($passwords as $password)

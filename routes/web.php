@@ -22,3 +22,4 @@ Route::get('/password/create/{id}', [Password\CreateController::class, 'show'])-
 Route::post('/password/create/{id}', [Password\CreateController::class, 'create'])->name('password.create');
 Route::delete('/password/delete/{id}', [Password\DeleteController::class, 'delete'])->name('password.delete');
 Route::post('/password/import', [Password\ImportController::class, 'import'])->name('password.import');
+Route::post('/password/export', [Password\ExportController::class, 'export'])->name('password.export');

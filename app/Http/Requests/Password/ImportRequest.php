@@ -30,15 +30,21 @@ class ImportRequest extends FormRequest
 
     public function csv_import ($filePath)
     {
+        // Open File
         $fp = fopen($filePath, 'r');        
+        // データ格納用
         $data =[];
+        // データカウント
         $cnt = 0;
+        // 1行ずつ読み込む
         while ($line = fgetcsv($fp))
         {
+            // Encoding
             mb_convert_variables('UTF-8', 'SJIS-win', $line);
-
-            if ($cnt > 0)
-            {                            
+            
+            // ヘッダー行は無視
+            if ($cnt > 0)            
+            {                  
                 $data[$cnt - 1] = [
                     'id' => $line[0],
                     'site' => $line[1],
@@ -50,8 +56,9 @@ class ImportRequest extends FormRequest
             }            
             $cnt++;
         }
+        // Close File
         fclose($fp);        
-
+        // 配列を返す
         return $data;
     }
 }

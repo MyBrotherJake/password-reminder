@@ -12,7 +12,7 @@ class IndexController extends Controller
     //
     public function show(Request $request) 
     {
-        $passwords = Password::all();        
+        $passwords = Password::orderBy('site')->get();        
         return view('password.index', ['name' => 'Laravel' ])
             ->with('passwords', $passwords);        
     }
