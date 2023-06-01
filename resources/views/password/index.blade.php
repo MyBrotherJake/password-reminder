@@ -15,6 +15,12 @@
 @endif
 
 <div class="form-btn" style="margin-bottom:20px;">
+  <form action="{{ route('password.import') }}" method="post" enctype="multipart/form-data">
+    @csrf
+    <label>Import File</label>    
+    <input type="file" value="Ref" accept=".csv" name="file">
+    <button type="submit">Import</button>
+  </form>
   <form action="{{ route('password.search') }}" method="post">
     @csrf
     <label for="site">Search WebSite</label>
@@ -23,7 +29,13 @@
   </form>
   <form action="{{ route('password.show.create', ['id' => 0]) }}" method="get">
     @csrf
+    <label for="">Create New</label>    
     <button type="submit">CREATE</button>
+  </form>
+  <form action="{{ route('password.export') }}" method="post">
+    @csrf
+    <label for="">Export CSV</label>
+    <button type="submit">Export</button>
   </form>
 </div>
 <div class="password-list">
@@ -50,7 +62,7 @@
             <button class="copy" onclick="onClickCopy('{{ addslashes('maddr'.$password->id) }}')">COPY</button>
           </dd>
           
-          <dt>Accou1nt:</dt>
+          <dt>Account:</dt>
           <dd>
             <input type="text" name="account" id={{ "account".$password->id }} value="{{ $password->account }}" readonly>
             <button class="copy" onclick="onClickCopy('{{ addslashes('account'.$password->id) }}')">COPY</button>

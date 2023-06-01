@@ -9,6 +9,8 @@ class Password extends Model
 {
     use HasFactory;
     protected $table = 'm_pass';
-    //protected $fillable = ['site', 'maddr', 'account', 'pass', 'bikou'];
+    protected $primaryKey = 'id';    
+    protected $fillable = ['site', 'maddr', 'account', 'pass', 'bikou'];
     public $timestamps = false;
+    public $incrementing = false;
 }
