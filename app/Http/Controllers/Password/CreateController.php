@@ -24,7 +24,8 @@ class CreateController extends Controller
         $id = $request->route('id');              
         // GET INFO
         $result = Password::where('id', '=', $id)->first();        
-        // 
+        //
+        $values['id'] = $id; 
         $values['site'] = optional($result)->site;
         $values['account'] = optional($result)->account;
         $values['maddr'] = optional($result)->maddr;
@@ -43,51 +44,40 @@ class CreateController extends Controller
     public function create(CreateRequest $request)
     {
         // GET ID
-        $id = $request->id;        
-
-        if ($id === "0")
-        {
-            // Create
-            $password = new Password;            
-            $values = $this->setValues($request, $password);        
-            // GETTA NEW ID
-            $newID = $password->id;
-
-            return view('password.register', [
-                'name' => 'Laravel',
-                'message' => 'Registered',
-                'id' => $newID,
-                'values' => $values,                
-                ]
-            );                    
-
+        $id = $request->id;           
+        
+        $password = Password::where('id', '=', $id)->first();
+        // データがあればUpdate、なければInsert
+        if ($password) {
+            $values = $this->setValues($request, $password);                    
         } else {
-            // Update
-            $password = Password::where('id', '=', $request->id)->first();            
-            $values = $this->setValues($request, $password);        
+            $password = new Password;            
+            $values = $this->setValues($request, $password);                        
+            // 新規ID を渡す
+            $password->id = $id;
+        }
+        // 登録・更新処理
+        $password->save();        
 
-            return view('password.register', [
-                'name' => 'Laravel',
-                'message' => 'Updated',
-                'id' => $id,
-                'values' => $values,                
-                ]
-            );        
-        }        
+        return view('password.register', [
+            'name' => 'Laravel',
+            'message' => 'Registered',
+            'id' => $id,
+            'values' => $values,                
+            ]
+        );                    
     }
 
 
     private function setValues(CreateRequest $request, $password)
     {
         $values = $request->get_values();
-
+        
         $password->site = $values['site'];
         $password->account = $values['account'];
         $password->maddr = $values['maddr'];
         $password->pass = $values['pass'];
-        $password->bikou = $values['bikou'];        
-
-        $password->save();        
+        $password->bikou = $values['bikou'];                
 
         return $values;
     }

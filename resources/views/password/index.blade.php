@@ -27,7 +27,7 @@
     <input type="text" name="site" id="site">        
     <button type="submit">Search</button>
   </form>
-  <form action="{{ route('password.show.create', ['id' => 0]) }}" method="get">
+  <form action="{{ route('password.show.create', ['id' => $newId]) }}" method="get">
     @csrf
     <label for="">Create New</label>    
     <button type="submit">CREATE</button>
