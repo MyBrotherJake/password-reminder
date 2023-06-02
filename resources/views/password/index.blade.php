@@ -4,40 +4,48 @@
     
 @section('menubar')
   @parent
-  <a href="/password">TOP</a>    
+  <a href="/password">TOP</a>
 @endsection
 
 @section('content')
-<p>{{ $name }}</p>
 
 @if (session('feedback.success'))
     <p style="color:aqua;">{{ session('feedback.success') }}</p>
 @endif
 
-<div class="form-btn" style="margin-bottom:20px;">
+<div class="form-btn">  
   <form action="{{ route('password.import') }}" method="post" enctype="multipart/form-data">
     @csrf
-    <label>Import File</label>    
+    <label>Import CSV File</label>    
     <input type="file" value="Ref" accept=".csv" name="file">
     <button type="submit">Import</button>
   </form>
+  
+  <form action="{{ route('password.export') }}" method="post" class="ml-100">
+    @csrf    
+    <label>Export CSV File</label>
+    <button type="submit">Export</button>
+  </form>
+</div>
+
+<div class="form-btn">  
+  
   <form action="{{ route('password.search') }}" method="post">
     @csrf
     <label for="site">Search WebSite</label>
     <input type="text" name="site" id="site">        
     <button type="submit">Search</button>
-  </form>
-  <form action="{{ route('password.show.create', ['id' => $newId]) }}" method="get">
-    @csrf
-    <label for="">Create New</label>    
+  </form>  
+
+  <form action="{{ route('password.show.create', ['id' => $newId]) }}" method="get" class="ml-100">
+    @csrf    
+    <label>Create New Account</label>
     <button type="submit">CREATE</button>
-  </form>
-  <form action="{{ route('password.export') }}" method="post">
-    @csrf
-    <label for="">Export CSV</label>
-    <button type="submit">Export</button>
-  </form>
+  </form>  
 </div>
+
+<hr size="1" />
+
 <div class="password-list">
   @foreach ($passwords as $password)
       <details>
@@ -78,11 +86,9 @@
           <dd>            
             <textarea name="bikou" id={{ "bikou".$password->id }} cols="30" rows="10" readonly>{{ $password->bikou }}</textarea>
             <button class="copy" onclick="onClickCopy('{{ addslashes('bikou'.$password->id) }}')">COPY</button>
-          </dd>                              
-          
+          </dd>              
         </dl>        
-      </details>
-    
+      </details>    
   @endforeach  
 </div>  
 @endsection

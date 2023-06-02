@@ -54,10 +54,10 @@ table {
 }
 
 .form-btn {
-  display: inline-flex;
+  display: flex;
   margin-right: 500px;
   margin-left: 10px;  
-  float: right;
+  margin-bottom:20px;
 }
 
 dd input {
@@ -69,6 +69,12 @@ dd textarea {
   border: solid;
 }
 
-.password-list {
-  display: inline-block;
+.password-list {  
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+}
+
+.ml-100 {
+  margin-left:100px;
 }
