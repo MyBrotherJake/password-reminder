@@ -13,22 +13,13 @@
     <p style="color:aqua;">{{ session('feedback.success') }}</p>
 @endif
 
-<div class="form-btn">  
+<div class="form-menu">  
   <form action="{{ route('password.import') }}" method="post" enctype="multipart/form-data">
     @csrf
     <label>Import CSV File</label>    
     <input type="file" value="Ref" accept=".csv" name="file">
     <button type="submit">Import</button>
-  </form>
-  
-  <form action="{{ route('password.export') }}" method="post" class="ml-100">
-    @csrf    
-    <label>Export CSV File</label>
-    <button type="submit">Export</button>
-  </form>
-</div>
-
-<div class="form-btn">  
+  </form>  
   
   <form action="{{ route('password.search') }}" method="post">
     @csrf
@@ -41,7 +32,14 @@
     @csrf    
     <label>Create New Account</label>
     <button type="submit">CREATE</button>
-  </form>  
+  </form>
+  
+  <form action="{{ route('password.export') }}" method="post" class="ml-100">
+    @csrf    
+    <label>Export CSV File</label>
+    <button type="submit">Export</button>
+  </form>
+  
 </div>
 
 <hr size="1" />
@@ -50,7 +48,7 @@
   @foreach ($passwords as $password)
       <details>
         <summary>
-          {{ $password->site }} 
+          {{ $password->site }}           
           <div class="form-btn">            
             <form action="{{ route('password.show.create', ['id' => $password->id]) }}" method="get">
               @csrf
@@ -62,7 +60,7 @@
               <button type="submit" onclick="return confirm('Do you want to delete?')">DELETE</button>
             </form>          
           </div>        
-        </summary>        
+        </summary>                
         <dl>
           <dt>Mail Address:</dt>
           <dd>
@@ -78,7 +76,7 @@
           
           <dt>Password:</dt>
           <dd>
-            <input type="text" name="pass" id={{ "pass".$password->id }} value="{{ $password->pass }}" readonly>
+            <input type="password" name="pass" id={{ "pass".$password->id }} value="{{ $password->pass }}" readonly>
             <button class="copy" onclick="onClickCopy('{{ addslashes('pass'.$password->id) }}')">COPY</button>
           </dd>
           
