@@ -13,7 +13,7 @@
     <p style="color:aqua;">{{ session('feedback.success') }}</p>
 @endif
 
-<div class="form-menu">  
+<div class="flex mx-24 mb-5">  
   <form action="{{ route('password.import') }}" method="post" enctype="multipart/form-data">
     @csrf
     <label>Import CSV File</label>    
@@ -24,7 +24,7 @@
   <form action="{{ route('password.search') }}" method="post">
     @csrf
     <label for="site">Search WebSite</label>
-    <input type="text" name="site" id="site">        
+    <input type="text" name="site" id="site" class="border">        
     <button type="submit">Search</button>
   </form>  
 
