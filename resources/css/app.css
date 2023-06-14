@@ -1,5 +1,5 @@
 @tailwind base;
-@tailwind component;
+@tailwind components;
 @tailwind utilities;
 
 /*
@@ -89,29 +89,32 @@ button {
   margin-right: 10px;  
   
 }
-
+/*
 .form-btn {
   display: flex;
   margin-right: 500px;
   margin-left: 10px;  
   margin-bottom:20px;
 }
+*/
 
 dd input {
-  width: 225px;
+  width: 250px;
   border: none;
 }
 
+.col {
+  width: 33%;
+}
+/*
 dd textarea {
   border: solid;
 }
-
+*/
+/*
 .password-list {  
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
 }
-
-.ml-100 {
-  margin-left:100px;
-}
+*/

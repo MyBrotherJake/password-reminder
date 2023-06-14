@@ -6,8 +6,15 @@ module.exports = {
     "./resources/views/layouts/layout.blade.php"
   ],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {        
+        '3': 'repeat(3, minmax(0, 1fr))',
+      }
+    },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss'),
+    require('autoprefixer'),
+  ],
 }
 
