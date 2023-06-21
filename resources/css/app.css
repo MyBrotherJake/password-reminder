@@ -67,8 +67,8 @@ input {
   border: 1px solid black;  
 }
 
-.create form {
-  display:inline-grid;
+.create input,  {
+  width: 100%;  
 }
 
 /* FORM */
@@ -86,8 +86,7 @@ button {
   width:75px;
   height: 30px;
   border: 1px solid aqua;
-  margin-right: 10px;  
-  
+  margin-right: 10px;    
 }
 /*
 .form-btn {
@@ -103,9 +102,6 @@ dd input {
   border: none;
 }
 
-.col {
-  width: 33%;
-}
 /*
 dd textarea {
   border: solid;

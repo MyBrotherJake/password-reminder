@@ -8,9 +8,7 @@
 @endsection
 
 @section('content')
-<p>{{ $name }}</p>
 <p style="color:aqua">{{ $message }}</p>
-
 @error('site')
   <p style="color: red">Required the WebSite.</p>
 @enderror
@@ -24,7 +22,7 @@
 @enderror
 
 <div class="create">
-  <form action="{{ route('password.create', ['id' => $id]) }}" method="post">        
+  <form action="{{ route('password.create', ['id' => $id]) }}" method="post" class="inline-grid">        
     @csrf
     <label for="site">WebSite</label>
     <input type="text" name="site" id="site" value={{ old('site', $values['site']) }}>        
@@ -35,8 +33,8 @@
     <label for="password">Password</label>
     <input type="text" name="password" id="password" value={{ old('pass', $values['pass']) }}>
     <label for="bikou">Other</label>
-    <textarea name="bikou" id="bikou" cols="30" rows="10">{{ old('bikou', $values['bikou']) }}</textarea>  
-    <button type="submit">REGISTER</button>    
+    <textarea name="bikou" id="bikou" cols="30" rows="10" class="border-solid border-2">{{ old('bikou', $values['bikou']) }}</textarea>  
+    <button type="submit" class="w-auto">REGISTER</button>    
   </form>
 </div>
 @endsection
