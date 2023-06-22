@@ -13,47 +13,47 @@
     <p style="color:aqua;">{{ session('feedback.success') }}</p>
 @endif
 
-<div class="form-menu">  
+<div class="menu grid grid-cols-1 sm:grid-cols-2 gap-2.5" >
   <form action="{{ route('password.import') }}" method="post" enctype="multipart/form-data">
     @csrf
     <label>Import CSV File</label>    
-    <input type="file" value="Ref" accept=".csv" name="file">
-    <button type="submit">Import</button>
+    <button type="submit" class="float-right sm:float-none">Import</button>
+    <input type="file" accept=".csv" name="file" class="w-64 md:w-auto" />    
   </form>  
-  
+ 
+  <form action="{{ route('password.export') }}" method="post" class="pt-1">
+    @csrf    
+    <label>Export CSV File</label>
+    <button type="submit"class="float-right sm:float-none">Export</button>
+  </form>
+
   <form action="{{ route('password.search') }}" method="post">
     @csrf
     <label for="site">Search WebSite</label>
-    <input type="text" name="site" id="site">        
-    <button type="submit">Search</button>
+    <button type="submit"class="float-right sm:float-none mt-2">Search</button>
+    <input type="text" name="site" id="site" class="w-32 md:w-64" />          
   </form>  
 
-  <form action="{{ route('password.show.create', ['id' => $newId]) }}" method="get" class="ml-100">
+  <form action="{{ route('password.show.create', ['id' => $newId]) }}" method="get" class="pt-1">
     @csrf    
-    <label>Create New Account</label>
-    <button type="submit">CREATE</button>
-  </form>
-  
-  <form action="{{ route('password.export') }}" method="post" class="ml-100">
-    @csrf    
-    <label>Export CSV File</label>
-    <button type="submit">Export</button>
-  </form>
-  
+    <label>Create Account</label>
+    <button type="submit"class="float-right sm:float-none">CREATE</button>
+  </form>  
 </div>
 
 <hr size="1" />
 
-<div class="password-list">
-  @foreach ($passwords as $password)
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+  @foreach ($passwords as $password)    
       <details>
         <summary>
           {{ $password->site }}           
-          <div class="form-btn">            
+          <div class="flex mr-96 ml-2.5 mb-5">            
             <form action="{{ route('password.show.create', ['id' => $password->id]) }}" method="get">
               @csrf
               <button type="submit">EDIT</button>
-            </form>
+            </form>            
+
             <form action="{{ route('password.delete', ['id' => $password->id]) }}" method="post">
               @method('DELETE')
               @csrf
@@ -82,11 +82,11 @@
           
           <dt>Other:</dt>
           <dd>            
-            <textarea name="bikou" id={{ "bikou".$password->id }} cols="30" rows="10" readonly>{{ $password->bikou }}</textarea>
+            <textarea name="bikou" id={{ "bikou".$password->id }} cols="30" rows="10" class="border-solid border" readonly>{{ $password->bikou }}</textarea>
             <button class="copy" onclick="onClickCopy('{{ addslashes('bikou'.$password->id) }}')">COPY</button>
           </dd>              
         </dl>        
-      </details>    
+      </details>        
   @endforeach  
 </div>  
 @endsection
