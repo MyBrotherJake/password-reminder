@@ -24,7 +24,7 @@
     <hr size="1">    
     <a class="pagetop" href="#"><div class="pagetop__arrow"></div></a>
   </div>  
-  <div class="m-2.5 w-5/6 mx-auto footer-color text-base text-center sm:text-right">
+  <div class="m-2.5 w-5/6 mx-auto footer-color text-base text-center">
     @yield('footer')
     <hr size="1">
   </div>    

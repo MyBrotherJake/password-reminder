@@ -4,7 +4,7 @@
     
 @section('menubar')
   @parent
-  <a href="/password">TOP</a>    
+  <a href="/">TOP</a>    
 @endsection
 
 @section('content')
@@ -40,5 +40,5 @@
 @endsection
 
 @section('footer')
-copyright 2023 jake
+copyright 2023 MyBrotherJake
 @endsection

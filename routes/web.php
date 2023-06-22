@@ -12,14 +12,10 @@ use App\Http\Controllers\Password;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/password', [Password\IndexController::class, 'show'])->name('password.index');
-Route::post('/password/search', [Password\SearchController::class, 'show'])->name('password.search');
-Route::get('/password/create/{id}', [Password\CreateController::class, 'show'])->name('password.show.create');
-Route::post('/password/create/{id}', [Password\CreateController::class, 'create'])->name('password.create');
-Route::delete('/password/delete/{id}', [Password\DeleteController::class, 'delete'])->name('password.delete');
-Route::post('/password/import', [Password\ImportController::class, 'import'])->name('password.import');
-Route::post('/password/export', [Password\ExportController::class, 'export'])->name('password.export');
+Route::get('/', [Password\IndexController::class, 'show'])->name('password.index');
+Route::post('/search', [Password\SearchController::class, 'show'])->name('password.search');
+Route::get('/create/{id}', [Password\CreateController::class, 'show'])->name('password.show.create');
+Route::post('/create/{id}', [Password\CreateController::class, 'create'])->name('password.create');
+Route::delete('/delete/{id}', [Password\DeleteController::class, 'delete'])->name('password.delete');
+Route::post('/import', [Password\ImportController::class, 'import'])->name('password.import');
+Route::post('/export', [Password\ExportController::class, 'export'])->name('password.export');
