@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-body {
-  font-size: 16px;
-  color: #999;
-  margin: 5px;  
-}
-*/
 .text-color {
   color: #999;
 }
@@ -18,20 +11,6 @@ body {
 .footer-color {
   color: #ccc;
 }
-/*
-h1 {
-  text-align: right;
-  color: #f6f6f6;
-  margin: 10px 0px -30px 0px;
-  letter-spacing: -4pt;
-}
-*/
-/*
-ul {
-  font-size: 12pt;
-  list-style: none;
-}
-*/
 
 hr {
   //margin: 25px 100px; 
@@ -39,29 +18,6 @@ hr {
   border-top: 1px dashed #ddd;
   width: 80%;
 }
-
-/*
-.menutitle {
-  font-size: 14pt;
-  font-weight: bold;
-  margin: 0px;
-}
-*/
-/*
-.content {
-  margin: 10px;
-  width: 100%;
-}
-*/
-/*
-.footer {
-  text-align: right;
-  font-size: 10pt;
-  margin: 10px;
-  border-bottom: solid 1px #ccc;
-  color: #ccc;
-}
-*/
 
 input {
   margin: 10px;
@@ -72,16 +28,6 @@ input {
   width: 100%;  
 }
 
-/* FORM */
-/*
-.form-menu {
-  display: flex;
-  margin-right: 100px;
-  margin-left: 100px;  
-  margin-bottom:20px;
-}
-*/
-
 button {
   border-radius: 8px;  
   width:75px;
@@ -89,29 +35,39 @@ button {
   border: 1px solid aqua;
   margin-right: 10px;    
 }
-/*
-.form-btn {
-  display: flex;
-  margin-right: 500px;
-  margin-left: 10px;  
-  margin-bottom:20px;
+
+button:hover {
+  color: red;
 }
-*/
 
 dd input {
   width: 250px;
   border: none;
 }
 
-/*
-dd textarea {
-  border: solid;
+/* To TOP */
+html {
+  scroll-behavior: smooth;
 }
-*/
-/*
-.password-list {  
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
+.pagetop {
+  height: 50px;
+  width: 50px;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  background: #fff;
+  border: solid 2px #000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
 }
-*/
+
+.pagetop__arrow {
+  height: 10px;
+  width: 10px;
+  border-top: 3px solid #000;
+  border-right: 3px solid #000;
+  transform: translateY(20%) rotate(-45deg);
+}
