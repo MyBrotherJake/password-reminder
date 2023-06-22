@@ -13,13 +13,12 @@
     <p style="color:aqua;">{{ session('feedback.success') }}</p>
 @endif
 
-<!--<div class="flex mx-24 mb-5">  -->
 <div class="menu grid grid-cols-1 sm:grid-cols-2 gap-2.5" >
   <form action="{{ route('password.import') }}" method="post" enctype="multipart/form-data">
     @csrf
     <label>Import CSV File</label>    
     <button type="submit" class="float-right sm:float-none">Import</button>
-    <input type="file" accept=".csv" name="file" />    
+    <input type="file" accept=".csv" name="file" class="w-64 md:w-auto" />    
   </form>  
  
   <form action="{{ route('password.export') }}" method="post" class="pt-1">
@@ -39,10 +38,7 @@
     @csrf    
     <label>Create Account</label>
     <button type="submit"class="float-right sm:float-none">CREATE</button>
-  </form>
-  
- 
-  
+  </form>  
 </div>
 
 <hr size="1" />

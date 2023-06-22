@@ -9,23 +9,23 @@
     @yield('title')
   </title>
 </head>
-<body class="text-base m-1.5 text-color max-w-full">
-  <h1 class="text-right tracking-tighter mt-10 mr-0 -mb-8 ml-0 h1-color">
-    @yield('title')
-  </h1>
-  @section('menubar')
-  <h2 class="text-lg m-0 font-bold">Menu</h2>
-  <ul class="text-lg list-none">
-    <li>@show</li>
-  </ul>
-  <hr size="1">
-  <div class="m-2.5 w-full  mx-auto">
-    @yield('content')
+<body class="text-base text-color m-10">
+  <div class="m-2.5 w-5/6  mx-auto">
+    <h1 class="text-right tracking-tighter mt-10 mr-10 -mb-8 ml-0 h1-color text-4xl font-bold">
+      @yield('title')
+    </h1>
+    @section('menubar')
+    <h2 class="text-sm sm:text-lg m-0 font-bold sm:block hidden">Menu</h2>
+    <ul class="text-lg list-none">
+      <li>@show</li>
+    </ul>
+    <hr size="1">
+    @yield('content')  
+    <hr size="1">    
   </div>
-  <hr size="1">    
-  <div class="w-full text-right mx-auto text-base m-2.5 footer-color">
+  <div class="m-2.5 w-5/6 mx-auto footer-color text-base text-center sm:text-right">
     @yield('footer')
-  </div>  
-  <hr size="1">
+    <hr size="1">
+  </div>    
 </body>
 </html>

@@ -34,9 +34,10 @@ ul {
 */
 
 hr {
-  margin: 25px 100px; 
+  //margin: 25px 100px; 
+  margin: 25px auto;
   border-top: 1px dashed #ddd;
-  width: 100%;
+  width: 80%;
 }
 
 /*

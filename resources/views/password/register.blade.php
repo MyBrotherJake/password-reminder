@@ -21,7 +21,7 @@
   <p style="color: red">Required the Password.</p>
 @enderror
 
-<div class="create">
+<div class="create m-2.5 w-5/6  mx-auto text-center">
   <form action="{{ route('password.create', ['id' => $id]) }}" method="post" class="inline-grid">        
     @csrf
     <label for="site">WebSite</label>
