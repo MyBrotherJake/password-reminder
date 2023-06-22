@@ -1,6 +1,9 @@
 import './bootstrap';
 
-function onClickCopy(elementName) {
+/**
+ * グローバル関数として登録
+ */
+window.onClickCopy = function (elementName) {
   const element  = document.getElementById(elementName);
   const value = element.value;
 
