@@ -12,8 +12,7 @@
   color: #ccc;
 }
 
-hr {
-  //margin: 25px 100px; 
+hr {  
   margin: 25px auto;
   border-top: 1px dashed #ddd;
   width: 80%;
@@ -24,7 +23,7 @@ input {
   border: 1px solid black;  
 }
 
-.create input,  {
+.create input {
   width: 100%;  
 }
 

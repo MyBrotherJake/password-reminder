@@ -11,6 +11,16 @@ export default defineConfig({
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
-        }),
+        }),        
     ],
+    build: {
+        chunkSizeWarningLimit: 2000,
+    },
+    css: {
+        postcss: {
+            plugins: [
+                require('tailwindcss')('./tailwind.config.js'),
+            ]
+        }
+    }
 });

@@ -28,6 +28,7 @@ services:
             - meilisearch
             - mailpit
             - selenium
+        restart: always    
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
@@ -49,6 +50,7 @@ services:
             test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
             retries: 3
             timeout: 5s
+        restart: always
     redis:
         image: 'redis:alpine'
         ports:
@@ -61,6 +63,7 @@ services:
             test: ["CMD", "redis-cli", "ping"]
             retries: 3
             timeout: 5s
+        restart: always
     meilisearch:
         image: 'getmeili/meilisearch:latest'
         ports:
@@ -73,6 +76,7 @@ services:
             test: ["CMD", "wget", "--no-verbose", "--spider",  "http://localhost:7700/health"]
             retries: 3
             timeout: 5s
+        restart: always
     mailpit:
         image: 'axllent/mailpit:latest'
         ports:
@@ -80,6 +84,7 @@ services:
             - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
         networks:
             - sail
+        restart: always
     selenium:
         image: 'selenium/standalone-chrome'
         extra_hosts:
@@ -88,6 +93,7 @@ services:
             - '/dev/shm:/dev/shm'
         networks:
             - sail
+        restart: always
 networks:
     sail:
         driver: bridge
