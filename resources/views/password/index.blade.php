@@ -76,7 +76,7 @@
           
           <dt>Password:</dt>
           <dd>
-            <input type="password" name="pass" id={{ "pass".$password->id }} value="{{ $password->pass }}" readonly>
+            <input type="text" name="pass" id={{ "pass".$password->id }} value="{{ $password->pass }}" readonly>
             <button class="copy" onclick="onClickCopy('{{ addslashes('pass'.$password->id) }}')">COPY</button>
           </dd>
           
